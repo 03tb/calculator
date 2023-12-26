@@ -17,7 +17,7 @@ body {
     align-items: center;
 }
 
-#screen {
+#display {
     margin:30px;
     width: 580px;
     height: 200px;
@@ -42,7 +42,9 @@ body {
     justify-content: center;
 }
 
-.maths{
+.decimal,
+.maths,
+.operators {    
     display: flex;
     flex: 1 0 calc(24%);
     align-items: center;
