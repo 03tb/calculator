@@ -1,29 +1,35 @@
 const container = document.querySelector('#container');
 
-let screen = document.getElementById('screen');
+const display = document.querySelector('#display');
 
-let currentNumber = [];
+// method to return numbers pressed in maths class
 
-const numberButtons = document.querySelectorAll('.maths');
+let currentValue = "";
+let numberValue;
+let parsedValue;
 
-numberButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        const number = button.getAttribute('data-number');
-        currentNumber.push(number);
-        updateScreen();
+const numberButton = document.querySelectorAll('.maths');
+const currentInput = document.querySelector('#currentInput');
+
+numberButton.forEach((button) => {
+    button.addEventListener ('click', () => {
+        const numberValue = button.getAttribute('data-number');
+        currentValue = currentValue.concat("", numberValue);
+        console.log(currentValue);
+        currentInput.textContent = currentValue;
     })
+    display.appendChild(currentInput);
 })
 
-function updateScreen(){
-    screen.textContent = currentNumber.join('');
+
+
+function parseCurrentValue(currentValue) {
+    parsedValue = parseInt (currentValue)
 }
 
-const actionButtons = document.querySelectorAll('.maths');
+const equalsButton = document.querySelector('.equals');
 
-actionButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        const action = button.getAttribute('data-action');
-        console.log(`${action} pressed`);
-    })
+equalsButton.addEventListener('click', () => {  
+    parseCurrentValue(currentValue);
+    console.log('this is the parsed value' + parsedValue);
 })
-
